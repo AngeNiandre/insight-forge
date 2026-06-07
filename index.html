@@ -104,6 +104,32 @@ body { background: var(--bg); color: var(--text); font-family: var(--body); font
 .service-features li strong { color: var(--text); font-weight: 500; }
 .service-tag { display: inline-block; font-family: var(--mono); font-size: 9px; background: var(--gold-dim); border: 1px solid rgba(232,184,75,0.3); border-radius: 99px; padding: 2px 8px; color: var(--gold); margin-top: 12px; }
 
+/* PORTFOLIO */
+.portfolio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 32px 0; }
+.project-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; transition: all 0.2s; position: relative; overflow: hidden; }
+.project-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+.project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); opacity: 0; transition: opacity 0.2s; }
+.project-card:hover::before { opacity: 1; }
+.project-icon { font-size: 28px; margin-bottom: 12px; }
+.project-card h4 { font-family: var(--display); font-size: 18px; font-weight: 700; color: var(--gold); margin-bottom: 12px; }
+.project-card p { color: var(--text2); font-weight: 300; margin-bottom: 16px; line-height: 1.6; font-size: 14px; }
+.project-card .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.project-card .project-tags .tag { font-size: 9px; padding: 3px 8px; }
+.project-card .project-link { font-family: var(--mono); font-size: 11px; color: var(--gold); text-decoration: none; transition: color 0.2s; }
+.project-card .project-link:hover { color: var(--gold2); text-decoration: underline; }
+
+/* ARTICLES */
+.articles-list { display: flex; flex-direction: column; gap: 20px; margin: 32px 0; }
+.article-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; transition: all 0.2s; position: relative; overflow: hidden; }
+.article-card:hover { border-color: var(--border2); }
+.article-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); opacity: 0; transition: opacity 0.2s; }
+.article-card:hover::before { opacity: 1; }
+.article-card h3 { font-family: var(--display); font-size: 20px; font-weight: 700; color: var(--gold); margin-bottom: 8px; }
+.article-meta { font-family: var(--mono); font-size: 10px; color: var(--text3); margin-bottom: 12px; }
+.article-card p { color: var(--text2); font-weight: 300; margin-bottom: 16px; line-height: 1.6; }
+.read-more { font-family: var(--mono); font-size: 11px; color: var(--gold); text-decoration: none; transition: color 0.2s; }
+.read-more:hover { color: var(--gold2); text-decoration: underline; }
+
 /* CTA & CONTACT */
 .cta-section { background: linear-gradient(135deg, var(--bg3) 0%, var(--bg2) 100%); border: 1px solid var(--border2); border-radius: 24px; padding: 40px; margin: 48px 0; }
 .cta-section h3 { font-size: 28px; margin-bottom: 16px; text-align: center; }
@@ -125,7 +151,12 @@ button[type="submit"]:hover { background: var(--gold2); }
 .scroll-top { position: fixed; bottom: 28px; right: 28px; width: 40px; height: 40px; background: var(--bg2); border: 1px solid var(--border2); border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text3); font-size: 16px; z-index: 200; opacity: 0; transition: all 0.2s; }
 .scroll-top.show { opacity: 1; }
 .scroll-top:hover { border-color: var(--gold); color: var(--gold); }
-@media (max-width: 900px) { .services-grid { grid-template-columns: 1fr; } .hero h1 { font-size: 40px; } .main { padding: 32px 24px 80px; } }
+
+@media (max-width: 900px) {
+  .services-grid, .portfolio-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 40px; }
+  .main { padding: 32px 24px 80px; }
+}
 </style>
 </head>
 <body>
@@ -138,7 +169,7 @@ button[type="submit"]:hover { background: var(--gold2); }
   </div>
   <div class="sidebar-progress">
     <div class="progress-row">
-      <span class="progress-label">Services</span>
+      <span class="progress-label">Progression</span>
       <span class="progress-pct" id="progress-pct">0%</span>
     </div>
     <div class="progress-bar-bg"><div class="progress-bar-fill" id="progress-fill"></div></div>
@@ -151,7 +182,9 @@ button[type="submit"]:hover { background: var(--gold2); }
     <a class="nav-item" href="#service3"><span class="nav-num">04</span>Industrialisation contenu</a>
     <a class="nav-item" href="#service4"><span class="nav-num">05</span>Robustesse & performance</a>
     <a class="nav-item" href="#service5"><span class="nav-num">06</span>Conseil transformation IA</a>
-    <a class="nav-item" href="#contact"><span class="nav-num">07</span>Contact & devis</a>
+    <a class="nav-item" href="#portfolio"><span class="nav-num">07</span>Portfolio</a>
+    <a class="nav-item" href="#articles"><span class="nav-num">08</span>Articles</a>
+    <a class="nav-item" href="#contact"><span class="nav-num">09</span>Contact & devis</a>
   </div>
   <div class="sidebar-footer">
     Insight Forge — Ange Niandré<br>
@@ -165,7 +198,7 @@ button[type="submit"]:hover { background: var(--gold2); }
 <div class="hero section visible" id="intro">
   <div class="kicker">Insight Forge · Agentic Automation Studio</div>
   <h1>Ange Niandré<br><span>Insight Developer</span><br>& Agentic Automation Maker</h1>
-  <p class="lead">Je transforme une idée brute en un système IA agentique automatisé et opérationnel. Voici mes cinq métiers d’orchestration d’agents intelligents.</p>
+  <p class="lead">Je transforme une idée brute en un système IA agentique automatisé et opérationnel. Voici mes cinq métiers d'orchestration d'agents intelligents.</p>
   <div class="hero-meta">
     <div class="meta-pill">🎯 5 domaines d'intervention</div>
     <div class="meta-pill">⚙️ De l'idée au système</div>
@@ -178,8 +211,8 @@ button[type="submit"]:hover { background: var(--gold2); }
   <div class="section-eyebrow">Métier 01</div>
   <h2>Conception de <em>systèmes agentiques</em></h2>
   <div class="services-grid">
-    <div class="service-card"><div class="service-icon">🏗️</div><h3>Orchestration multi‑agents</h3><p class="service-desc">Je conçois des architectures d’agents IA (Claude Haiku/Sonnet) orchestrées sur Make.com pour automatiser des processus métier complexes.</p><ul class="service-features"><li><strong>Livrable :</strong> Blueprint Make.com, prompts, documentation</li><li><strong>Exemple :</strong> Générateur de formation complet (9 agents, 30 modules)</li><li><strong>Technologies :</strong> Claude API, Make.com, Google Workspace</li></ul><div class="service-tag">De 1 500 € à 5 000 €</div></div>
-    <div class="service-card"><div class="service-icon">🧩</div><h3>Architecture sur mesure</h3><p class="service-desc">Définition des rôles, séquençage, gestion d’état, boucles de validation – une usine à valeur autonome.</p><ul class="service-features"><li><strong>Durée :</strong> 2 à 4 semaines</li><li><strong>Sortie :</strong> Système industrialisable</li><li><strong>Cas :</strong> Processus RH, financier, commercial</li></ul><div class="service-tag">Sur devis</div></div>
+    <div class="service-card"><div class="service-icon">🏗️</div><h3>Orchestration multi‑agents</h3><p class="service-desc">Je conçois des architectures d'agents IA (Claude Haiku/Sonnet) orchestrées sur Make.com pour automatiser des processus métier complexes.</p><ul class="service-features"><li><strong>Livrable :</strong> Blueprint Make.com, prompts, documentation</li><li><strong>Exemple :</strong> Générateur de formation complet (9 agents, 30 modules)</li><li><strong>Technologies :</strong> Claude API, Make.com, Google Workspace</li></ul><div class="service-tag">De 1 500 € à 5 000 €</div></div>
+    <div class="service-card"><div class="service-icon">🧩</div><h3>Architecture sur mesure</h3><p class="service-desc">Définition des rôles, séquençage, gestion d'état, boucles de validation – une usine à valeur autonome.</p><ul class="service-features"><li><strong>Durée :</strong> 2 à 4 semaines</li><li><strong>Sortie :</strong> Système industrialisable</li><li><strong>Cas :</strong> Processus RH, financier, commercial</li></ul><div class="service-tag">Sur devis</div></div>
   </div>
 </section>
 
@@ -187,8 +220,8 @@ button[type="submit"]:hover { background: var(--gold2); }
   <div class="section-eyebrow">Métier 02</div>
   <h2>Automatisation <em>intelligente</em></h2>
   <div class="services-grid">
-    <div class="service-card"><div class="service-icon">⚡</div><h3>Workflow auto‑correcteur</h3><p class="service-desc">Passage d’une simple description à un workflow multi-agents autonome avec validation intégrée (Fine Check) et supervision macro (Head Supervisor).</p><ul class="service-features"><li><strong>Bénéfice :</strong> Zéro intervention humaine, qualité garantie</li><li><strong>Exemple :</strong> Génération de rapports d’audit</li></ul><div class="service-tag">Inclus dans conception</div></div>
-    <div class="service-card"><div class="service-icon">🔁</div><h3>Orchestration sans code</h3><p class="service-desc">Intégration de l’API Claude dans Make.com avec retry exponentiel, gestion des erreurs, routage dynamique.</p><ul class="service-features"><li><strong>Stack :</strong> Make.com, webhooks, JSON, HTTP</li><li><strong>Résultat :</strong> Système résilient</li></ul><div class="service-tag">À partir de 1 000 €</div></div>
+    <div class="service-card"><div class="service-icon">⚡</div><h3>Workflow auto‑correcteur</h3><p class="service-desc">Passage d'une simple description à un workflow multi-agents autonome avec validation intégrée (Fine Check) et supervision macro (Head Supervisor).</p><ul class="service-features"><li><strong>Bénéfice :</strong> Zéro intervention humaine, qualité garantie</li><li><strong>Exemple :</strong> Génération de rapports d'audit</li></ul><div class="service-tag">Inclus dans conception</div></div>
+    <div class="service-card"><div class="service-icon">🔁</div><h3>Orchestration sans code</h3><p class="service-desc">Intégration de l'API Claude dans Make.com avec retry exponentiel, gestion des erreurs, routage dynamique.</p><ul class="service-features"><li><strong>Stack :</strong> Make.com, webhooks, JSON, HTTP</li><li><strong>Résultat :</strong> Système résilient</li></ul><div class="service-tag">À partir de 1 000 €</div></div>
   </div>
 </section>
 
@@ -197,7 +230,7 @@ button[type="submit"]:hover { background: var(--gold2); }
   <h2>Industrialisation <em>de contenu</em></h2>
   <div class="services-grid">
     <div class="service-card"><div class="service-icon">📦</div><h3>Packaging professionnel</h3><p class="service-desc">Livraison de packages complets (HTML, PDF, rapports qualité, manifests, .zip) prêts à être vendus ou diffusés.</p><ul class="service-features"><li><strong>Extras :</strong> Grille de compétences, projet fil rouge, attestation</li></ul><div class="service-tag">Inclus dans conception</div></div>
-    <div class="service-card"><div class="service-icon">📄</div><h3>Conversion PDF automatisée</h3><p class="service-desc">Intégration d’API de conversion HTML → PDF (html2pdf, Gotenberg).</p><ul class="service-features"><li><strong>Livrable :</strong> Dossier compressé + version imprimable</li><li><strong>Qualité :</strong> Rapport qualité JSON joint</li></ul><div class="service-tag">Option + 300 €</div></div>
+    <div class="service-card"><div class="service-icon">📄</div><h3>Conversion PDF automatisée</h3><p class="service-desc">Intégration d'API de conversion HTML → PDF (html2pdf, Gotenberg).</p><ul class="service-features"><li><strong>Livrable :</strong> Dossier compressé + version imprimable</li><li><strong>Qualité :</strong> Rapport qualité JSON joint</li></ul><div class="service-tag">Option + 300 €</div></div>
   </div>
 </section>
 
@@ -205,8 +238,8 @@ button[type="submit"]:hover { background: var(--gold2); }
   <div class="section-eyebrow">Métier 04</div>
   <h2>Robustesse <em>& performance</em></h2>
   <div class="services-grid">
-    <div class="service-card"><div class="service-icon">🛡️</div><h3>Gestion d’erreurs avancée</h3><p class="service-desc">Retry exponentiel, circuit-breaker, fallback MANUAL_REVIEW, logs structurés.</p><ul class="service-features"><li><strong>Résultat :</strong> Système résistant aux pics d’appels (429)</li><li><strong>Bonus :</strong> Journalisation Sheets, alertes email</li></ul><div class="service-tag">Standard</div></div>
-    <div class="service-card"><div class="service-icon">💰</div><h3>Optimisation des coûts</h3><p class="service-desc">Réduction des coûts API jusqu’à 65 % (Haiku validation / Sonnet génération).</p><ul class="service-features"><li><strong>Tracking :</strong> Suivi des tokens par agent</li><li><strong>Sécurité :</strong> HMAC webhooks</li></ul><div class="service-tag">Inclus</div></div>
+    <div class="service-card"><div class="service-icon">🛡️</div><h3>Gestion d'erreurs avancée</h3><p class="service-desc">Retry exponentiel, circuit-breaker, fallback MANUAL_REVIEW, logs structurés.</p><ul class="service-features"><li><strong>Résultat :</strong> Système résistant aux pics d'appels (429)</li><li><strong>Bonus :</strong> Journalisation Sheets, alertes email</li></ul><div class="service-tag">Standard</div></div>
+    <div class="service-card"><div class="service-icon">💰</div><h3>Optimisation des coûts</h3><p class="service-desc">Réduction des coûts API jusqu'à 65 % (Haiku validation / Sonnet génération).</p><ul class="service-features"><li><strong>Tracking :</strong> Suivi des tokens par agent</li><li><strong>Sécurité :</strong> HMAC webhooks</li></ul><div class="service-tag">Inclus</div></div>
   </div>
 </section>
 
@@ -214,8 +247,88 @@ button[type="submit"]:hover { background: var(--gold2); }
   <div class="section-eyebrow">Métier 05</div>
   <h2>Conseil en <em>transformation IA</em></h2>
   <div class="services-grid">
-    <div class="service-card"><div class="service-icon">🎓</div><h3>Accompagnement stratégique</h3><p class="service-desc">De l’idée à la mise en production : identification, architecture, déploiement.</p><ul class="service-features"><li><strong>Livrable :</strong> Système clé en main + formation</li></ul><div class="service-tag">Devis dès 2 000 €</div></div>
-    <div class="service-card"><div class="service-icon">🚀</div><h3>Transfert de compétences</h3><p class="service-desc">Formation de vos équipes à l’orchestration d’agents IA et prompt engineering.</p><ul class="service-features"><li><strong>Format :</strong> Atelier 2 jours ou e‑learning</li><li><strong>Support :</strong> Documentation, templates</li></ul><div class="service-tag">1 500 € / atelier</div></div>
+    <div class="service-card"><div class="service-icon">🎓</div><h3>Accompagnement stratégique</h3><p class="service-desc">De l'idée à la mise en production : identification, architecture, déploiement.</p><ul class="service-features"><li><strong>Livrable :</strong> Système clé en main + formation</li></ul><div class="service-tag">Devis dès 2 000 €</div></div>
+    <div class="service-card"><div class="service-icon">🚀</div><h3>Transfert de compétences</h3><p class="service-desc">Formation de vos équipes à l'orchestration d'agents IA et prompt engineering.</p><ul class="service-features"><li><strong>Format :</strong> Atelier 2 jours ou e‑learning</li><li><strong>Support :</strong> Documentation, templates</li></ul><div class="service-tag">1 500 € / atelier</div></div>
+  </div>
+</section>
+
+<section class="section" id="portfolio">
+  <div class="section-eyebrow">Réalisations</div>
+  <h2><em>Portfolio</em></h2>
+  <p style="color:var(--text2); margin-bottom:24px; font-weight:300;">Six systèmes agentiques conçus, orchestrés et livrés. Chaque projet est une forge en action.</p>
+
+  <div class="portfolio-grid">
+    <div class="project-card">
+      <div class="project-icon">🏗️</div>
+      <h4>Générateur de formation complet</h4>
+      <p>9 agents IA (Haiku/Sonnet) sur Make.com produisent 30 modules avec quiz, grille de compétences et projet fil rouge. Livré en 48h.</p>
+      <div class="project-tags"><span class="tag gold">Claude API</span><span class="tag">Make.com</span><span class="tag">Gotenberg</span></div>
+      <span class="project-link" style="opacity:0.5;">Confidentiel</span>
+    </div>
+    <div class="project-card">
+      <div class="project-icon">⚡</div>
+      <h4>Pipeline de rapports d'audit</h4>
+      <p>Workflow auto-correcteur avec Fine Check et Head Supervisor. 200 rapports sans erreur, temps de traitement réduit de 80%.</p>
+      <div class="project-tags"><span class="tag gold">Make.com</span><span class="tag">Webhooks</span><span class="tag">PDF</span></div>
+      <span class="project-link" style="opacity:0.5;">Confidentiel</span>
+    </div>
+    <div class="project-card">
+      <div class="project-icon">📦</div>
+      <h4>Industrialisation e-learning</h4>
+      <p>Transformation d'un syllabus en package complet : fiches, exercices, attestations, PDF. 15 packages livrés en 3 jours.</p>
+      <div class="project-tags"><span class="tag gold">Make.com</span><span class="tag">html2pdf</span><span class="tag">Google Drive</span></div>
+      <span class="project-link" style="opacity:0.5;">Confidentiel</span>
+    </div>
+    <div class="project-card">
+      <div class="project-icon">💰</div>
+      <h4>Optimisation coûts API SaaS RH</h4>
+      <p>Routage Haiku/Sonnet, circuit-breaker, logs structurés. Réduction de 65% des coûts API, système résilient.</p>
+      <div class="project-tags"><span class="tag gold">Claude API</span><span class="tag">Google Sheets</span><span class="tag">HMAC</span></div>
+      <span class="project-link" style="opacity:0.5;">Confidentiel</span>
+    </div>
+    <div class="project-card">
+      <div class="project-icon">🎓</div>
+      <h4>Transformation IA cabinet de conseil</h4>
+      <p>Identification de 7 processus, conception sur mesure, déploiement en 6 semaines. Équipe de 5 formée.</p>
+      <div class="project-tags"><span class="tag gold">Make.com</span><span class="tag">Notion</span><span class="tag">Google Workspace</span></div>
+      <span class="project-link" style="opacity:0.5;">Confidentiel</span>
+    </div>
+    <div class="project-card">
+      <div class="project-icon">🚀</div>
+      <h4>Atelier prompt engineering</h4>
+      <p>Formation de 12 développeurs sur 2 jours. 3 workflows agentiques créés pendant l'atelier.</p>
+      <div class="project-tags"><span class="tag gold">Make.com</span><span class="tag">Claude</span><span class="tag">Documentation</span></div>
+      <span class="project-link" style="opacity:0.5;">Confidentiel</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="articles">
+  <div class="section-eyebrow">Blog</div>
+  <h2><em>Articles &</em> réflexions</h2>
+  <p style="color:var(--text2); margin-bottom:24px; font-weight:300;">La révolution silencieuse de l'automatisation agentique, décryptée par Insight Forge.</p>
+
+  <div class="articles-list">
+    <div class="article-card">
+      <h3>Pourquoi l'orchestration agentique est la prochaine révolution silencieuse</h3>
+      <div class="article-meta">Juin 2026 · Ange Niandré</div>
+      <p>L'intelligence artificielle générative a franchi un cap. Mais le véritable bouleversement n'est pas l'IA qui répond à une question, c'est l'IA qui travaille. Depuis deux ans, j'observe un basculement discret mais irréversible : celui de l'automatisation agentique. Là où les workflows traditionnels exécutent des tâches prédéfinies, les systèmes agentiques raisonnent, valident, corrigent et produisent de manière autonome.</p>
+      <p>Chez Insight Forge, nous ne programmons plus des automatisations rigides : nous orchestrons des essaims d'agents IA — des Claude Haiku pour valider, des Claude Sonnet pour générer — qui collaborent entre eux comme une micro-usine cognitive. Concrètement, cela signifie qu'une idée formulée le matin peut devenir un système opérationnel le soir. Un générateur de formation complet. Un pipeline de rapports d'audit. Une chaîne de production de contenu. Le tout, sans intervention humaine une fois le blueprint établi.</p>
+      <p>Ce n'est pas de la science-fiction. C'est ce que nous faisons chaque jour. Et nous sommes convaincus que chaque organisation gagnera à comprendre ce nouveau paradigme. Dans les articles à venir, je vous montrerai comment. Avec des cas concrets, des architectures décryptées, des retours d'expérience. Parce que la révolution silencieuse mérite d'être racontée.</p>
+      <a href="#" class="read-more">Lire l'article complet →</a>
+    </div>
+    <div class="article-card">
+      <h3>Étude de cas : 9 agents IA produisent une formation en 48 heures</h3>
+      <div class="article-meta">Juillet 2026 · Ange Niandré</div>
+      <p>Démonstration concrète de l'architecture agentique mise en œuvre pour un générateur de formation. De la décomposition du problème à l'orchestration finale, en passant par les boucles de validation et la génération PDF. Un retour d'expérience technique et méthodologique.</p>
+      <a href="#" class="read-more">Lire l'article →</a>
+    </div>
+    <div class="article-card">
+      <h3>Réduire ses coûts API Claude de 65% : le guide technique</h3>
+      <div class="article-meta">Août 2026 · Ange Niandré</div>
+      <p>Routage intelligent Haiku/Sonnet, retry exponentiel, circuit-breaker, journalisation des tokens : les techniques concrètes pour maîtriser votre facture API sans sacrifier la qualité de vos systèmes agentiques.</p>
+      <a href="#" class="read-more">Lire l'article →</a>
+    </div>
   </div>
 </section>
 
@@ -260,7 +373,7 @@ button[type="submit"]:hover { background: var(--gold2); }
 <button class="scroll-top" id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Haut">↑</button>
 
 <script>
-const sections = ['intro','service1','service2','service3','service4','service5','contact'];
+const sections = ['intro','service1','service2','service3','service4','service5','portfolio','articles','contact'];
 let visited = new Set(['intro']);
 function updateProgress() {
   const pct = Math.round((visited.size / sections.length) * 100);
