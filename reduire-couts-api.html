@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Réduire ses coûts API Claude de 65% : le guide technique – Insight Forge</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #060910;
+  --bg2: #0c1018;
+  --bg3: #111620;
+  --border: #1e2535;
+  --border2: #2a3448;
+  --gold: #e8b84b;
+  --gold2: #f5d07a;
+  --text: #dce8f0;
+  --text2: #7a90a8;
+  --text3: #3a4a5c;
+  --mono: 'JetBrains Mono', monospace;
+  --display: 'Syne', sans-serif;
+  --body: 'Space Grotesk', sans-serif;
+}
+body { background: var(--bg); color: var(--text); font-family: var(--body); font-size: 16px; line-height: 1.8; max-width: 800px; margin: 0 auto; padding: 40px 24px 120px; }
+h1 { font-family: var(--display); font-size: 36px; color: var(--text); margin: 24px 0 8px; line-height: 1.2; }
+h2 { font-family: var(--display); font-size: 24px; color: var(--gold); margin: 40px 0 12px; }
+.article-meta { font-family: var(--mono); font-size: 11px; color: var(--text3); margin-bottom: 40px; }
+.article-meta span { color: var(--gold); }
+p { color: var(--text2); margin-bottom: 24px; font-weight: 300; }
+em { color: var(--gold); font-style: normal; }
+.back-link { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 12px; color: var(--gold); text-decoration: none; margin-bottom: 40px; }
+.back-link:hover { text-decoration: underline; }
+
+/* Share menu */
+.share-menu-container { position: relative; margin-bottom: 40px; }
+.share-toggle { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: var(--bg); font-family: var(--mono); font-size: 12px; font-weight: 600; padding: 8px 16px; border-radius: 40px; text-decoration: none; cursor: pointer; border: none; transition: 0.2s; }
+.share-toggle:hover { background: var(--gold2); }
+.share-menu { position: absolute; top: 100%; left: 0; margin-top: 8px; background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 12px; display: none; z-index: 10; min-width: 200px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+.share-menu.active { display: flex; flex-direction: column; gap: 8px; }
+.share-item { display: flex; align-items: center; gap: 8px; padding: 8px 12px; color: var(--text); text-decoration: none; border-radius: 6px; transition: 0.2s; font-size: 13px; }
+.share-item:hover { background: var(--bg3); color: var(--gold); }
+.share-icon { font-size: 14px; }
+
+.cta-section { background: linear-gradient(135deg, var(--bg3) 0%, var(--bg2) 100%); border: 1px solid var(--border2); border-radius: 24px; padding: 32px; margin: 48px 0; text-align: center; }
+.cta-btn { display: inline-flex; align-items: center; gap: 12px; background: var(--gold); color: var(--bg); font-family: var(--mono); font-size: 14px; font-weight: 600; padding: 12px 28px; border-radius: 40px; text-decoration: none; transition: 0.2s; }
+.cta-btn:hover { background: var(--gold2); }
+ul { list-style: none; padding-left: 0; margin-bottom: 24px; }
+li { padding-left: 20px; position: relative; color: var(--text2); margin-bottom: 8px; }
+li::before { content: '▹'; position: absolute; left: 0; color: var(--gold); }
+</style>
+</head>
+<body>
+
+<a href="index.html" class="back-link">← Retour au site Insight Forge</a>
+
+<div class="share-menu-container">
+  <button class="share-toggle" onclick="toggleShareMenu(event)">🔗 Partager</button>
+  <div class="share-menu" id="shareMenu">
+    <a class="share-item" href="#" onclick="shareOn('linkedin', event)" target="_blank">
+      <span class="share-icon">🔗</span> LinkedIn
+    </a>
+    <a class="share-item" href="#" onclick="shareOn('facebook', event)" target="_blank">
+      <span class="share-icon">📘</span> Facebook
+    </a>
+    <a class="share-item" href="#" onclick="shareOn('twitter', event)" target="_blank">
+      <span class="share-icon">𝕏</span> X (Twitter)
+    </a>
+    <a class="share-item" href="#" onclick="shareOn('whatsapp', event)" target="_blank">
+      <span class="share-icon">💬</span> WhatsApp
+    </a>
+    <a class="share-item" href="#" onclick="shareOn('telegram', event)" target="_blank">
+      <span class="share-icon">✈️</span> Telegram
+    </a>
+    <a class="share-item" href="#" onclick="shareOn('email', event)" target="_blank">
+      <span class="share-icon">✉️</span> Email
+    </a>
+    <a class="share-item" href="#" onclick="copyLink(event)">
+      <span class="share-icon">📋</span> Copier le lien
+    </a>
+  </div>
+</div>
+
+<h1>Réduire ses coûts API Claude de 65% : le guide technique</h1>
+<div class="article-meta"><span>Par Ange Niandré</span> — Août 2026</div>
+
+<p>Utiliser Claude Sonnet pour chaque appel API, c'est comme payer un architecte pour poser des briques. Dans une architecture agentique bien conçue, on peut réduire sa facture de <em>65%</em> sans perdre en qualité. Voici comment.</p>
+
+<h2>1. Routage intelligent : Haiku pour la validation, Sonnet pour la génération</h2>
+<p>La majorité des appels de validation (relecture, vérification de règles, classification simple) n'exigent pas un modèle puissant. En routant ces tâches vers <em>Claude Haiku</em> (trois fois moins cher), on économise considérablement. Réservez Sonnet aux tâches de rédaction complexe ou de raisonnement.</p>
+
+<p>Dans un workflow Make.com, j'utilise un module <em>Router</em> qui analyse l'intention de l'appel (via un champ `task_type`) et dirige vers le modèle approprié. Un simple filtre conditionnel suffit.</p>
+
+<h2>2. Retry exponentiel & circuit breaker</h2>
+<p>Les erreurs 429 (rate limit) gaspillent des tokens en tentatives répétées. Implémentez un mécanisme de retry avec <em>délai exponentiel</em> (1s, 2s, 4s, 8s…) et un circuit breaker qui stoppe les appels après 5 échecs consécutifs pour éviter les coûts inutiles.</p>
+
+<h2>3. Journalisation des tokens par agent</h2>
+<p>Chaque appel à l'API Claude renvoie le nombre de tokens utilisés. En loggant cette donnée dans Google Sheets avec l'identifiant de l'agent, vous obtenez un tableau de bord précis des coûts par composant. Cela permet de repérer les agents les plus gourmands et d'ajuster les prompts pour les réduire.</p>
+
+<h2>4. Sécurité et fiabilité</h2>
+<p>Ajoutez une signature HMAC sur vos webhooks Make.com pour éviter les appels frauduleux. Et mettez en place un fallback <code>MANUAL_REVIEW</code> : si un agent échoue après retry, la tâche est mise en attente pour intervention humaine plutôt que de répéter indéfiniment.</p>
+
+<h2>Résultat mesuré</h2>
+<p>Chez un client SaaS RH, nous sommes passés de 1 200 $ par mois à 420 $, tout en augmentant le volume de rapports générés. L'optimisation ne porte pas sur la qualité, mais sur <em>l'intelligence de l'orchestration</em>.</p>
+
+<div class="cta-section">
+  <p style="color:var(--text); font-weight:500;">Besoin d'un audit de vos coûts API ?</p>
+  <a href="index.html#contact" class="cta-btn">📅 Discutons-en</a>
+</div>
+
+<div class="share-menu-container" style="margin-top:40px;">
+  <button class="share-toggle" onclick="toggleShareMenu(event)">🔗 Partager cet article</button>
+  <div class="share-menu" id="shareMenu2">
+    <a class="share-item" href="#" onclick="shareOn('linkedin', event)" target="_blank">
+      <span class="share-icon">🔗</span> LinkedIn
+    </a>
+    <a class="share-item" href="#" onclick="shareOn('facebook', event)" target="_blank">
+      <span class="share-icon">📘</span> Facebook
+    </a>
+    <a class="share-item" href="#" onclick="shareOn('twitter', event)" target="_blank">
+      <span class="share-icon">𝕏</span> X (Twitter)
+    </a>
+    <a class="share-item" href="#" onclick="shareOn('whatsapp', event)" target="_blank">
+      <span class="share-icon">💬</span> WhatsApp
+    </a>
+    <a class="share-item" href="#" onclick="shareOn('telegram', event)" target="_blank">
+      <span class="share-icon">✈️</span> Telegram
+    </a>
+    <a class="share-item" href="#" onclick="shareOn('email', event)" target="_blank">
+      <span class="share-icon">✉️</span> Email
+    </a>
+    <a class="share-item" href="#" onclick="copyLink(event)">
+      <span class="share-icon">📋</span> Copier le lien
+    </a>
+  </div>
+</div>
+
+<script>
+const articleUrl = window.location.href;
+const articleTitle = document.querySelector('h1').textContent;
+
+function toggleShareMenu(event) {
+  event.preventDefault();
+  const menu = event.target.closest('.share-menu-container').querySelector('.share-menu');
+  document.querySelectorAll('.share-menu').forEach(m => {
+    if (m !== menu) m.classList.remove('active');
+  });
+  menu.classList.toggle('active');
+}
+
+function shareOn(platform, event) {
+  event.preventDefault();
+  const encodedUrl = encodeURIComponent(articleUrl);
+  const encodedTitle = encodeURIComponent(articleTitle);
+  const encodedText = encodeURIComponent(`Découvre "${articleTitle}" sur Insight Forge : `);
+  
+  const shareUrls = {
+    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+    twitter: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
+    whatsapp: `https://wa.me/?text=${encodedText}${encodedUrl}`,
+    telegram: `https://t.me/share/url?url=${encodedUrl}&text=${encodedTitle}`,
+    email: `mailto:?subject=${encodedTitle}&body=${encodedText}${encodedUrl}`
+  };
+  
+  if (shareUrls[platform]) {
+    window.open(shareUrls[platform], '_blank', 'width=600,height=400');
+  }
+}
+
+function copyLink(event) {
+  event.preventDefault();
+  navigator.clipboard.writeText(articleUrl).then(() => {
+    const btn = event.target.closest('.share-item');
+    const originalText = btn.textContent;
+    btn.textContent = '✅ Copié !';
+    setTimeout(() => {
+      btn.textContent = originalText;
+    }, 2000);
+  });
+}
+
+// Fermer le menu en cliquant ailleurs
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.share-menu-container')) {
+    document.querySelectorAll('.share-menu').forEach(menu => menu.classList.remove('active'));
+  }
+});
+</script>
+
+</body>
+</html>
