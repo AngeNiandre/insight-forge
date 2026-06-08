@@ -67,7 +67,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--body); font
 .progress-bar-fill { height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold2)); border-radius: 99px; width: 0%; transition: width 0.5s cubic-bezier(.4,0,.2,1); }
 .nav-section { padding: 16px 22px 8px; }
 .nav-section-label { font-size: 9px; font-family: var(--mono); color: var(--text3); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 10px; }
-.nav-item { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 7px; cursor: pointer; font-size: 13px; color: var(--text2); transition: all 0.15s; text-decoration: none; margin-bottom: 2px; }
+.nav-item { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 7px; cursor: pointer; font-size: 13px; color: var(--text2); transition: all 0.15s; text-decoration: none; margin: 0; }
 .nav-item:hover { background: var(--bg3); color: var(--text); }
 .nav-item.active { background: var(--gold-dim); color: var(--gold); border-left: 2px solid var(--gold); padding-left: 8px; }
 .nav-num { font-family: var(--mono); font-size: 10px; width: 20px; text-align: right; color: var(--text3); }
@@ -88,7 +88,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--body); font
 .hero h1 span { color: var(--gold); }
 .hero .lead { font-size: 16px; color: var(--text2); font-weight: 300; line-height: 1.85; max-width: 680px; }
 .hero-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
-.meta-pill { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 11px; color: var(--text2); background: var(--bg3); border: 1px solid var(--border2); border-radius: 99px; padding: 5px 14px; }
+.meta-pill { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 11px; color: var(--text2); background: var(--bg3); border: 1px solid var(--border2); border-radius: 99px; padding: 6px 12px; }
 
 /* SERVICE CARDS */
 .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 32px 0; }
@@ -102,7 +102,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--body); font
 .service-features { list-style: none; margin-top: 16px; }
 .service-features li { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: var(--text2); margin-bottom: 8px; font-weight: 300; }
 .service-features li strong { color: var(--text); font-weight: 500; }
-.service-tag { display: inline-block; font-family: var(--mono); font-size: 9px; background: var(--gold-dim); border: 1px solid rgba(232,184,75,0.3); border-radius: 99px; padding: 2px 8px; color: var(--gold); margin-top: 12px; }
+.service-tag { display: inline-block; font-family: var(--mono); font-size: 9px; background: var(--gold-dim); border: 1px solid rgba(232,184,75,0.3); border-radius: 99px; padding: 2px 8px; color: var(--gold); }
 
 /* PORTFOLIO */
 .portfolio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 32px 0; }
@@ -133,7 +133,7 @@ body { background: var(--bg); color: var(--text); font-family: var(--body); font
 /* CTA & CONTACT */
 .cta-section { background: linear-gradient(135deg, var(--bg3) 0%, var(--bg2) 100%); border: 1px solid var(--border2); border-radius: 24px; padding: 40px; margin: 48px 0; }
 .cta-section h3 { font-size: 28px; margin-bottom: 16px; text-align: center; }
-.cta-btn { display: inline-flex; align-items: center; gap: 12px; background: var(--gold); color: var(--bg); font-family: var(--mono); font-size: 14px; font-weight: 600; padding: 12px 28px; border-radius: 40px; text-decoration: none; transition: 0.2s; margin-top: 16px; }
+.cta-btn { display: inline-flex; align-items: center; gap: 12px; background: var(--gold); color: var(--bg); font-family: var(--mono); font-size: 14px; font-weight: 600; padding: 12px 28px; border-radius: 40px; text-decoration: none; transition: 0.2s; border: none; cursor: pointer; }
 .cta-btn:hover { background: var(--gold2); transform: scale(1.02); }
 .contact-form { max-width: 500px; margin: 0 auto; text-align: left; }
 .form-group { margin-bottom: 16px; }
@@ -148,7 +148,7 @@ button[type="submit"]:hover { background: var(--gold2); }
 .tag.gold { border-color: rgba(232,184,75,0.35); color: var(--gold); background: var(--gold-dim); }
 .tag a { color: inherit; text-decoration: none; }
 .tag a:hover { text-decoration: underline; }
-.scroll-top { position: fixed; bottom: 28px; right: 28px; width: 40px; height: 40px; background: var(--bg2); border: 1px solid var(--border2); border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text3); font-size: 16px; z-index: 200; opacity: 0; transition: all 0.2s; }
+.scroll-top { position: fixed; bottom: 28px; right: 28px; width: 40px; height: 40px; background: var(--bg2); border: 1px solid var(--border2); border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; transition: 0.2s; color: var(--text2); }
 .scroll-top.show { opacity: 1; }
 .scroll-top:hover { border-color: var(--gold); color: var(--gold); }
 
@@ -211,8 +211,8 @@ button[type="submit"]:hover { background: var(--gold2); }
   <div class="section-eyebrow">Métier 01</div>
   <h2>Conception de <em>systèmes agentiques</em></h2>
   <div class="services-grid">
-    <div class="service-card"><div class="service-icon">🏗️</div><h3>Orchestration multi‑agents</h3><p class="service-desc">Je conçois des architectures d'agents IA (Claude Haiku/Sonnet) orchestrées sur Make.com pour automatiser des processus métier complexes.</p><ul class="service-features"><li><strong>Livrable :</strong> Blueprint Make.com, prompts, documentation</li><li><strong>Exemple :</strong> Générateur de formation complet (9 agents, 30 modules)</li><li><strong>Technologies :</strong> Claude API, Make.com, Google Workspace</li></ul><div class="service-tag">De 1 500 € à 5 000 €</div></div>
-    <div class="service-card"><div class="service-icon">🧩</div><h3>Architecture sur mesure</h3><p class="service-desc">Définition des rôles, séquençage, gestion d'état, boucles de validation – une usine à valeur autonome.</p><ul class="service-features"><li><strong>Durée :</strong> 2 à 4 semaines</li><li><strong>Sortie :</strong> Système industrialisable</li><li><strong>Cas :</strong> Processus RH, financier, commercial</li></ul><div class="service-tag">Sur devis</div></div>
+    <div class="service-card"><div class="service-icon">🏗️</div><h3>Orchestration multi‑agents</h3><p class="service-desc">Je conçois des architectures d'agents IA (Claude Haiku/Sonnet) orchestrés, avec gestion d'état et validation en cascade.</p></div>
+    <div class="service-card"><div class="service-icon">🧩</div><h3>Architecture sur mesure</h3><p class="service-desc">Définition des rôles, séquençage, gestion d'état, boucles de validation auto-correctrices.</p></div>
   </div>
 </section>
 
@@ -220,8 +220,8 @@ button[type="submit"]:hover { background: var(--gold2); }
   <div class="section-eyebrow">Métier 02</div>
   <h2>Automatisation <em>intelligente</em></h2>
   <div class="services-grid">
-    <div class="service-card"><div class="service-icon">⚡</div><h3>Workflow auto‑correcteur</h3><p class="service-desc">Passage d'une simple description à un workflow multi-agents autonome avec validation intégrée (Fine Check) et supervision macro (Head Supervisor).</p><ul class="service-features"><li><strong>Bénéfice :</strong> Zéro intervention humaine, qualité garantie</li><li><strong>Exemple :</strong> Génération de rapports d'audit</li></ul><div class="service-tag">Inclus dans conception</div></div>
-    <div class="service-card"><div class="service-icon">🔁</div><h3>Orchestration sans code</h3><p class="service-desc">Intégration de l'API Claude dans Make.com avec retry exponentiel, gestion des erreurs, routage dynamique.</p><ul class="service-features"><li><strong>Stack :</strong> Make.com, webhooks, JSON, HTTP</li><li><strong>Résultat :</strong> Système résilient</li></ul><div class="service-tag">À partir de 1 000 €</div></div>
+    <div class="service-card"><div class="service-icon">⚡</div><h3>Workflow auto‑correcteur</h3><p class="service-desc">Passage d'une simple description à un workflow multi-agents autonome avec Fine Check et Head Supervisor.</p></div>
+    <div class="service-card"><div class="service-icon">🔁</div><h3>Orchestration sans code</h3><p class="service-desc">Intégration de l'API Claude dans Make.com avec retry exponentiel, gestion des erreurs avancée.</p></div>
   </div>
 </section>
 
@@ -229,8 +229,8 @@ button[type="submit"]:hover { background: var(--gold2); }
   <div class="section-eyebrow">Métier 03</div>
   <h2>Industrialisation <em>de contenu</em></h2>
   <div class="services-grid">
-    <div class="service-card"><div class="service-icon">📦</div><h3>Packaging professionnel</h3><p class="service-desc">Livraison de packages complets (HTML, PDF, rapports qualité, manifests, .zip) prêts à être vendus ou diffusés.</p><ul class="service-features"><li><strong>Extras :</strong> Grille de compétences, projet fil rouge, attestation</li></ul><div class="service-tag">Inclus dans conception</div></div>
-    <div class="service-card"><div class="service-icon">📄</div><h3>Conversion PDF automatisée</h3><p class="service-desc">Intégration d'API de conversion HTML → PDF (html2pdf, Gotenberg).</p><ul class="service-features"><li><strong>Livrable :</strong> Dossier compressé + version imprimable</li><li><strong>Qualité :</strong> Rapport qualité JSON joint</li></ul><div class="service-tag">Option + 300 €</div></div>
+    <div class="service-card"><div class="service-icon">📦</div><h3>Packaging professionnel</h3><p class="service-desc">Livraison de packages complets (HTML, PDF, rapports qualité, manifests, .zip).</p></div>
+    <div class="service-card"><div class="service-icon">📄</div><h3>Conversion PDF automatisée</h3><p class="service-desc">Intégration d'API de conversion HTML → PDF (html2pdf, Gotenberg).</p></div>
   </div>
 </section>
 
@@ -238,8 +238,8 @@ button[type="submit"]:hover { background: var(--gold2); }
   <div class="section-eyebrow">Métier 04</div>
   <h2>Robustesse <em>& performance</em></h2>
   <div class="services-grid">
-    <div class="service-card"><div class="service-icon">🛡️</div><h3>Gestion d'erreurs avancée</h3><p class="service-desc">Retry exponentiel, circuit-breaker, fallback MANUAL_REVIEW, logs structurés.</p><ul class="service-features"><li><strong>Résultat :</strong> Système résistant aux pics d'appels (429)</li><li><strong>Bonus :</strong> Journalisation Sheets, alertes email</li></ul><div class="service-tag">Standard</div></div>
-    <div class="service-card"><div class="service-icon">💰</div><h3>Optimisation des coûts</h3><p class="service-desc">Réduction des coûts API jusqu'à 65 % (Haiku validation / Sonnet génération).</p><ul class="service-features"><li><strong>Tracking :</strong> Suivi des tokens par agent</li><li><strong>Sécurité :</strong> HMAC webhooks</li></ul><div class="service-tag">Inclus</div></div>
+    <div class="service-card"><div class="service-icon">🛡️</div><h3>Gestion d'erreurs avancée</h3><p class="service-desc">Retry exponentiel, circuit-breaker, fallback MANUAL_REVIEW, logs structurés.</p></div>
+    <div class="service-card"><div class="service-icon">💰</div><h3>Optimisation des coûts</h3><p class="service-desc">Réduction des coûts API jusqu'à 65 % (Haiku validation / Sonnet génération).</p></div>
   </div>
 </section>
 
@@ -247,8 +247,8 @@ button[type="submit"]:hover { background: var(--gold2); }
   <div class="section-eyebrow">Métier 05</div>
   <h2>Conseil en <em>transformation IA</em></h2>
   <div class="services-grid">
-    <div class="service-card"><div class="service-icon">🎓</div><h3>Accompagnement stratégique</h3><p class="service-desc">De l'idée à la mise en production : identification, architecture, déploiement.</p><ul class="service-features"><li><strong>Livrable :</strong> Système clé en main + formation</li></ul><div class="service-tag">Devis dès 2 000 €</div></div>
-    <div class="service-card"><div class="service-icon">🚀</div><h3>Transfert de compétences</h3><p class="service-desc">Formation de vos équipes à l'orchestration d'agents IA et prompt engineering.</p><ul class="service-features"><li><strong>Format :</strong> Atelier 2 jours ou e‑learning</li><li><strong>Support :</strong> Documentation, templates</li></ul><div class="service-tag">1 500 € / atelier</div></div>
+    <div class="service-card"><div class="service-icon">🎓</div><h3>Accompagnement stratégique</h3><p class="service-desc">De l'idée à la mise en production : identification, architecture, déploiement.</p></div>
+    <div class="service-card"><div class="service-icon">🚀</div><h3>Transfert de compétences</h3><p class="service-desc">Formation de vos équipes à l'orchestration d'agents IA et prompt engineering.</p></div>
   </div>
 </section>
 
@@ -309,24 +309,25 @@ button[type="submit"]:hover { background: var(--gold2); }
   <p style="color:var(--text2); margin-bottom:24px; font-weight:300;">La révolution silencieuse de l'automatisation agentique, décryptée par Insight Forge.</p>
 
   <div class="articles-list">
-    <div class="article-card">
-      <h3>Pourquoi l'orchestration agentique est la prochaine révolution silencieuse</h3>
-      <div class="article-meta">Juin 2026 · Ange Niandré</div>
-      <p>L'intelligence artificielle générative a franchi un cap. Mais le véritable bouleversement n'est pas l'IA qui répond à une question, c'est l'IA qui travaille. Depuis deux ans, j'observe un basculement discret mais irréversible : celui de l'automatisation agentique. Là où les workflows traditionnels exécutent des tâches prédéfinies, les systèmes agentiques raisonnent, valident, corrigent et produisent de manière autonome.</p>
-      <p>Chez Insight Forge, nous ne programmons plus des automatisations rigides : nous orchestrons des essaims d'agents IA — des Claude Haiku pour valider, des Claude Sonnet pour générer — qui collaborent entre eux comme une micro-usine cognitive. Concrètement, cela signifie qu'une idée formulée le matin peut devenir un système opérationnel le soir. Un générateur de formation complet. Un pipeline de rapports d'audit. Une chaîne de production de contenu. Le tout, sans intervention humaine une fois le blueprint établi.</p>
-      <p>Ce n'est pas de la science-fiction. C'est ce que nous faisons chaque jour. Et nous sommes convaincus que chaque organisation gagnera à comprendre ce nouveau paradigme. Dans les articles à venir, je vous montrerai comment. Avec des cas concrets, des architectures décryptées, des retours d'expérience. Parce que la révolution silencieuse mérite d'être racontée.</p>
-      <a href="#" class="read-more">Lire l'article complet →</a>
-    </div>
-    <div class="article-card">
-      <h3>Étude de cas : 9 agents IA produisent une formation en 48 heures</h3>
-      <div class="article-meta">Juillet 2026 · Ange Niandré</div>
-      <p>Démonstration concrète de l'architecture agentique mise en œuvre pour un générateur de formation. De la décomposition du problème à l'orchestration finale, en passant par les boucles de validation et la génération PDF. Un retour d'expérience technique et méthodologique.</p>
-      <a href="#" class="read-more">Lire l'article →</a>
-    </div>
-    <div class="article-card">
+    <div class="article-card" onclick="window.location.href='reduire-couts-api.html'" style="cursor: pointer;">
       <h3>Réduire ses coûts API Claude de 65% : le guide technique</h3>
       <div class="article-meta">Août 2026 · Ange Niandré</div>
       <p>Routage intelligent Haiku/Sonnet, retry exponentiel, circuit-breaker, journalisation des tokens : les techniques concrètes pour maîtriser votre facture API sans sacrifier la qualité de vos systèmes agentiques.</p>
+      <a href="reduire-couts-api.html" class="read-more" onclick="event.stopPropagation()">Lire l'article complet →</a>
+    </div>
+    
+    <div class="article-card">
+      <h3>Pourquoi l'orchestration agentique est la prochaine révolution silencieuse</h3>
+      <div class="article-meta">Juin 2026 · Ange Niandré</div>
+      <p>L'intelligence artificielle générative a franchi un cap. Mais le véritable bouleversement n'est pas l'IA qui répond à une question, c'est l'IA qui travaille. Depuis deux ans, j'observe une transformation majeure.</p>
+      <p>Chez Insight Forge, nous ne programmons plus des automatisations rigides : nous orchestrons des essaims d'agents IA — des Claude Haiku pour valider, des Claude Sonnet pour générer — qui se corrigent mutuellement.</p>
+      <a href="#" class="read-more">Lire l'article complet →</a>
+    </div>
+    
+    <div class="article-card">
+      <h3>Étude de cas : 9 agents IA produisent une formation en 48 heures</h3>
+      <div class="article-meta">Juillet 2026 · Ange Niandré</div>
+      <p>Démonstration concrète de l'architecture agentique mise en œuvre pour un générateur de formation. De la décomposition du problème à l'orchestration finale, en passant par les boucles de validation et les retours auto-correcteurs.</p>
       <a href="#" class="read-more">Lire l'article →</a>
     </div>
   </div>
